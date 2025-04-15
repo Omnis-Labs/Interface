@@ -16,10 +16,10 @@ export function PrivyProvider({ children, ...props }: { children: React.ReactNod
             config={{
                 // Customize Privy's appearance in your app
                 appearance: {
-                    theme: 'dark',
+                    theme: 'light',
                     accentColor: '#676FFF',
                     walletChainType: 'solana-only',
-                    logo: "/omnis-logo-full-white.svg",
+                    logo: "/logos/omnis-logo-full-1.svg",
                     walletList: ['phantom', 'backpack', 'solflare', 'rainbow', 'coinbase_wallet', 'metamask', 'uniswap', 'okx_wallet', 'universal_profile', 'wallet_connect']
                 },
 

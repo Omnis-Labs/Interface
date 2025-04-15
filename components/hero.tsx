@@ -1,7 +1,13 @@
+"use client"
+
 import { logos } from "@/lib/icons"
-import { Button } from "./ui/button"
+import { ConnectWalletButton } from "./ui/connect-wallet"
+import { usePrivy } from "@privy-io/react-auth";
+import { WalletStatus } from "./ui/wallet-status";
 
 export const Hero = () => {
+    const { authenticated } = usePrivy();
+
     return (
         <div className="pt-4 px-4 mx-auto max-5xl text-center space-y-20">
             <div className="flex flex-col items-center justify-center space-y-6">
@@ -18,9 +24,9 @@ export const Hero = () => {
                     AI-powered DeFi strategist that builds and executes personalized portfolio strategies on-chain. Chat with our agent to create, deploy, and monitor custom trading strategies without writing code.
                 </div>
 
-                <Button className="">
-                    Connect wallet
-                </Button>
+                {!authenticated ?
+                    <ConnectWalletButton /> : <WalletStatus />
+                }
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-6">
