@@ -13,7 +13,7 @@ export default function Signin() {
     const { authenticated } = usePrivy();
 
     useEffect(() => {
-        if (authenticated) redirect("/strategy-library")
+        if (authenticated) redirect("/ai-portfolio-manager")
     }, [authenticated])
 
     return (
