@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import Link from "next/link"
 
 import { cn } from "@/lib/utils"
 import {
@@ -54,21 +53,17 @@ export function MainNav() {
     const path = usePathname();
 
     return (
-        <NavigationMenu>
+        <NavigationMenu className="hidden md:block">
             <NavigationMenuList className="gap-6">
                 <NavigationMenuItem>
-                    <Link href="strategy-library" legacyBehavior passHref>
-                        <NavigationMenuLink className={cn("rounded-none text-md text-muted-foreground", path.includes("strategy-library") ? "border-b-3 border-b-black text-black" : "")}>
-                            Strategy Library
-                        </NavigationMenuLink>
-                    </Link>
+                    <NavigationMenuLink href="strategy-library" className={cn("rounded-none text-md text-muted-foreground", path.includes("strategy-library") ? "border-b-3 border-b-black text-black" : "")}>
+                        Strategy Library
+                    </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <Link href="ai-portfolio-manager" legacyBehavior passHref>
-                        <NavigationMenuLink className={cn("rounded-none text-md text-muted-foreground", path.includes("ai-portfolio-manager") ? "border-b-3 border-b-black text-black" : "")}>
-                            AI Portfolio Manager
-                        </NavigationMenuLink>
-                    </Link>
+                    <NavigationMenuLink href="ai-portfolio-manager" className={cn("rounded-none text-md text-muted-foreground", path.includes("ai-portfolio-manager") ? "border-b-3 border-b-black text-black" : "")}>
+                        AI Portfolio Manager
+                    </NavigationMenuLink>
                 </NavigationMenuItem>
                 {/* <NavigationMenuItem>
                     <NavigationMenuTrigger className={cn("rounded-none", path.includes("strategy-library") ? "border-b-2 border-b-black" : "")}>Strategy Library</NavigationMenuTrigger>
@@ -120,11 +115,9 @@ export function MainNav() {
                     </NavigationMenuContent>
                 </NavigationMenuItem> */}
                 <NavigationMenuItem>
-                    <Link href="dashboard" legacyBehavior passHref>
-                        <NavigationMenuLink className={cn("rounded-none text-md text-muted-foreground", path.includes("dashboard") ? "border-b-3 border-b-black text-black" : "")}>
-                            Dashboard
-                        </NavigationMenuLink>
-                    </Link>
+                    <NavigationMenuLink href="dashboard" className={cn("rounded-none text-md text-muted-foreground", path.includes("dashboard") ? "border-b-3 border-b-black text-black" : "")}>
+                        Dashboard
+                    </NavigationMenuLink>
                 </NavigationMenuItem>
             </NavigationMenuList>
         </NavigationMenu>

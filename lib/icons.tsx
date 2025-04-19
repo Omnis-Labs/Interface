@@ -26,6 +26,10 @@ export const Icons = {
         <Image src="/crypto-logos/bitcoin-btc-logo.svg" alt="Bitcoin" width={width} height={height} className={className} />
     ),
 
+    binance: ({ width = 100, height = 100, className = "" }) => (
+        <Image src="/crypto-logos/bnb-logo.svg" alt="Binance" width={width} height={height} className={className} />
+    ),
+
     ethereum: ({ width = 100, height = 100, className = "" }) => (
         <Image src="/crypto-logos/ethereum-eth-logo.svg" alt="Ethereum" width={width} height={height} className={className} />
     ),
