@@ -2,12 +2,19 @@
 
 import Image from "next/image";
 
-import { ConnectWalletButton } from "@/components/ui/connect-wallet"
+import { useEffect } from "react";
+import { redirect } from "next/navigation";
 import { usePrivy } from "@privy-io/react-auth";
+
 import { WalletStatus } from "@/components/ui/wallet-status";
+import { ConnectWalletButton } from "@/components/ui/connect-wallet"
 
 export default function Signin() {
     const { authenticated } = usePrivy();
+
+    useEffect(() => {
+        if (authenticated) redirect("/strategy-library")
+    }, [authenticated])
 
     return (
         <div className="relative font-[family-name:var(--font-geist-sans)] text-foreground">
