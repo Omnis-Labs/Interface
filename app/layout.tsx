@@ -28,14 +28,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} !pb-10 relative antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} !pb-10 relative min-h-screen antialiased flex flex-col`}
       >
         {/* Background overlay */}
         <div className="absolute inset-0 bg-[url('/backdrop.jpeg')] bg-cover bg-center bg-no-repeat bg-fixed opacity-16 z-0" />
         <PrivyProvider>
           <Header />
           {children}
-          {/* <Footer /> */}
+          <Footer />
         </PrivyProvider>
       </body>
     </html>

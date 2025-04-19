@@ -1,16 +1,12 @@
-"use client"
-
+import { Button } from "@/components/ui/button";
 import { logos } from "@/lib/icons"
-import { ConnectWalletButton } from "@/components/ui/connect-wallet"
-import { usePrivy } from "@privy-io/react-auth";
-import { WalletStatus } from "@/components/ui/wallet-status";
+import Link from "next/link";
 
 export default function Home() {
-  const { authenticated } = usePrivy();
 
   return (
-    <div className="relative min-h-screen font-[family-name:var(--font-geist-sans)] text-foreground">
-      <div className="pt-4 px-4 mx-auto max-5xl text-center space-y-20">
+    <div className="relative font-[family-name:var(--font-geist-sans)] text-foreground">
+      <div className="pt-4 px-4 mx-auto max-w-5xl text-center space-y-20">
         <div className="flex flex-col items-center justify-center space-y-6">
 
           <div className="flex flex-col items-center gap-2">
@@ -24,10 +20,11 @@ export default function Home() {
           <div className="text-center text-xl max-w-2xl mx-auto">
             AI-powered DeFi strategist that builds and executes personalized portfolio strategies on-chain. Chat with our agent to create, deploy, and monitor custom trading strategies without writing code.
           </div>
-
-          {!authenticated ?
-            <ConnectWalletButton /> : <WalletStatus />
-          }
+          <Link href={"/sign-in"}>
+            <Button className="px-6 py-6 text-xl rounded-3xl cursor-pointer text-center relative overflow-hidden bg-gradient-to-r from-[#000A3F] via-[#000A3F] to-[#6FB1FC] flex justify-center group/modal-btn">
+              Launch App
+            </Button>
+          </Link>
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-6">
