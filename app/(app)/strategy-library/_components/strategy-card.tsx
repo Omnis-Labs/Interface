@@ -4,24 +4,14 @@ import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 import { StrategyInterface } from "@/types/strategy"
 import { Status } from "./status-variant"
 import { TvlBar } from "./tvl-bar"
-import { Icons } from "@/lib/icons"
+import { Icons, logos } from "@/lib/icons"
 
 interface StrategyCardProps {
   strategy: StrategyInterface
@@ -30,7 +20,10 @@ interface StrategyCardProps {
 export const StrategyCard = ({ strategy }: StrategyCardProps) => {
 
   return (
-    <Card className="w-full">
+    <Card className="relative w-full overflow-hidden">
+
+      <logos.omnisBlack className="absolute -right-12 -top-12 w-64 h-64 opacity-3" />
+
       <CardHeader>
         <CardTitle className="flex justify-between">
           <div className="">
