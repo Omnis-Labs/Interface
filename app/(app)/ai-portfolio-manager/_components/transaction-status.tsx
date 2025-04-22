@@ -24,8 +24,11 @@ export function TrasnactionStatus() {
     const transaction = {
         hash: "0x713c83a320d87f32bece0eff68319e98dae58c2dc42adecbe20f4b6632eef03e",
         status: "Confirmed",
-        Gas: 0.002
+        Gas: 0.002,
+        "strategies-activated": 3 / 3
     }
+
+    const slicedTxn = transaction["hash"] ? transaction["hash"].slice(0, 4) + "..." + transaction["hash"].slice(-4) : "Loading...";
 
     return (
         <div className="relative rounded-2xl w-lg bg-[url('/green-bg.jpeg')]">

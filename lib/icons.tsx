@@ -125,3 +125,16 @@ export const FeaturesIcons = {
     ),
 }
 
+export const UiIcons = {
+    sliders: ({ width = 100, height = 100, className = "" }) => (
+        <Image src="/icons/sliders.svg" alt="slider" width={width} height={height} className={`rounded-full ${className}`} />
+    ),
+
+    percent: ({ width = 100, height = 100, className = "" }) => (
+        <Image src="/icons/percent.svg" alt="percent" width={width} height={height} className={`rounded-full ${className}`} />
+    ),
+
+    coinPile: ({ width = 100, height = 100, className = "" }) => (
+        <Image src="/icons/coin-pile.png" alt="tokens" width={width} height={height} className={`rounded-full ${className}`} />
+    ),
+}

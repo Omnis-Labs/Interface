@@ -31,7 +31,7 @@ export const ConnectWalletButton = () => {
     const { login } = useLogin({
         onComplete: (params) => {
             if (!params.wasAlreadyAuthenticated) {
-                router.replace('/strategy-library');
+                router.replace('/ai-portfolio-manager');
             }
         },
         onError: (error) => {
@@ -41,7 +41,7 @@ export const ConnectWalletButton = () => {
 
     useEffect(() => {
         if (authenticated) {
-            router.replace('/strategy-library');
+            router.replace('/ai-portfolio-manager');
         }
     }, [authenticated, router]);
 

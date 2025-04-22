@@ -1,4 +1,4 @@
-import { TrasnactionStatus } from "./_components/transaction-status";
+import { TrasnactionStatus } from "../ai-portfolio-manager/_components/transaction-status";
 
 export default function Page() {
     return (

@@ -1,6 +1,8 @@
 import Image from "next/image"
 import { RotateCcw } from "lucide-react"
 import Chat from "./_components/chat"
+import { PortfolioForm } from "./_components/portfolio-form"
+import { RecommendedPortfolio } from "./_components/recommended-portfolio"
 
 // export default function AiPortfolioManager() {
 //     return (
@@ -32,10 +34,15 @@ import Chat from "./_components/chat"
 //     )
 // }
 
-export default function AIPortfolioManager() {
+export default function AiPortfolioManager() {
     return (
-        <div>
-            AI Portfolio Manager
+        <div className="relative font-[family-name:var(--font-geist-sans)] text-foreground">
+            <div className="pt-4 px-4 mx-auto max-w-4xl">
+                <div className="flex items-center justify-center">
+                    <PortfolioForm />
+                </div>
+                <RecommendedPortfolio />
+            </div>
         </div>
     )
 }
