@@ -1,29 +1,31 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
+import { useRouter } from "next/navigation"
 import { useLogout, usePrivy } from "@privy-io/react-auth"
-import { ChevronDown, ChevronUp } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { WalletIcons } from "@/lib/icons"
-import { read } from "fs"
-import { redirect } from "next/navigation"
 
 export const WalletStatus = () => {
+    const router = useRouter();
+
     const { user, authenticated, ready } = usePrivy();
     const { logout } = useLogout({
         onSuccess: () => {
-            console.log("user logged out");
+            router.replace("/sign-in");
         }
     })
 
+    useEffect(() => {
+        if (!authenticated) {
+            router.replace('/sign-in');
+        }
+    }, [authenticated, router]);
+
     const walletAddress = ready && authenticated && user?.wallet?.address ? user.wallet.address : null;
     const slicedWalletAd = walletAddress ? walletAddress.slice(0, 4) + "..." + walletAddress.slice(-4) : "Loading...";
-
-    useEffect(() => {
-        if (!authenticated) redirect("/sign-in")
-    }, [authenticated])
 
     return (
         <Button

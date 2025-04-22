@@ -1,10 +1,12 @@
 'use client';
 
+import React from 'react';
+
 import { PrivyProvider as PrivyAuthProvider } from '@privy-io/react-auth';
 import { toSolanaWalletConnectors } from '@privy-io/react-auth/solana';
+import { bsc } from 'viem/chains';
 
 const solanaConnectors = toSolanaWalletConnectors({
-    // By default, shouldAutoConnect is enabled
     shouldAutoConnect: false,
 });
 
@@ -12,15 +14,16 @@ export function PrivyProvider({ children, ...props }: { children: React.ReactNod
     return (
         <PrivyAuthProvider
             {...props}
-            appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID || 'cm86tsq50015o5uhcb49yz6op'}
+            appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID!}
             config={{
                 // Customize Privy's appearance in your app
                 appearance: {
                     theme: 'light',
                     accentColor: '#676FFF',
-                    walletChainType: 'solana-only',
+                    walletChainType: "ethereum-and-solana",
                     logo: "/logos/omnis-logo-full-1.svg",
-                    walletList: ['phantom', 'backpack', 'solflare', 'rainbow', 'coinbase_wallet', 'metamask', 'uniswap', 'okx_wallet', 'universal_profile', 'wallet_connect']
+                    showWalletLoginFirst: true,
+                    walletList: ['phantom', 'backpack', 'solflare', 'rainbow', 'coinbase_wallet', 'metamask', 'uniswap', 'universal_profile', 'wallet_connect']
                 },
 
                 solanaClusters: [{ name: 'devnet', rpcUrl: 'https://api.devnet.solana.com' }],
@@ -38,7 +41,10 @@ export function PrivyProvider({ children, ...props }: { children: React.ReactNod
                     solana: {
                         createOnLogin: "off",
                     },
-                }
+                },
+
+                supportedChains: [bsc],
+                defaultChain: bsc,
             }}
         >
             {children}

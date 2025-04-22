@@ -4,9 +4,15 @@ import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { useLogin } from "@privy-io/react-auth";
+import { useLogin, usePrivy } from "@privy-io/react-auth";
+import { useRouter } from 'next/navigation';
+import { useEffect } from "react";
+import { Skeleton } from "./skeleton";
 
 export const ConnectWalletButton = () => {
+    const { authenticated, ready } = usePrivy();
+    const router = useRouter()
+
     const walletIcons = [
         {
             src: "./wallets/Phantom_SVG_Icon.svg",
@@ -24,16 +30,29 @@ export const ConnectWalletButton = () => {
 
     const { login } = useLogin({
         onComplete: (params) => {
-            console.log("Login complete:", params);
+            if (!params.wasAlreadyAuthenticated) {
+                router.replace('/strategy-library');
+            }
         },
         onError: (error) => {
-            console.error("Login error:", error);
+            console.log("Login error:", error);
         }
     });
 
+    useEffect(() => {
+        if (authenticated) {
+            router.replace('/strategy-library');
+        }
+    }, [authenticated, router]);
+
+    if (!ready || authenticated) return (
+        <Skeleton className="w-24 h-10" />
+    );
+
     return (
         <Button
-            onClick={login}
+            onClick={() => login()}
+            disabled={authenticated}
             className={cn(
                 "px-6 py-6 text-xl rounded-3xl cursor-pointer text-center relative overflow-hidden bg-gradient-to-r from-[#000A3F] via-[#000A3F] to-[#6FB1FC] flex justify-center group/modal-btn",
             )}

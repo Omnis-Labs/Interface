@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useRouter } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 import {
@@ -10,6 +11,7 @@ import {
     NavigationMenuList,
 } from "@/components/ui/navigation-menu"
 import { usePathname } from "next/navigation"
+import { usePrivy } from "@privy-io/react-auth"
 
 const components: { title: string; href: string; description: string }[] = [
     {
@@ -51,17 +53,37 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function MainNav() {
     const path = usePathname();
+    const { authenticated } = usePrivy(); // Get authenticated state
+    const router = useRouter();
+
+    const handleNavigation = (href: string) => {
+        if (!authenticated) {
+            // If not authenticated, redirect to sign-in
+            router.replace('/sign-in');
+        } else {
+            // If authenticated, navigate to the desired page
+            router.push(href);
+        }
+    };
 
     return (
         <NavigationMenu className="hidden md:block">
             <NavigationMenuList className="gap-6">
                 <NavigationMenuItem>
-                    <NavigationMenuLink href="strategy-library" className={cn("rounded-none text-md text-muted-foreground", path.includes("strategy-library") ? "border-b-3 border-b-black text-black" : "")}>
+                    <NavigationMenuLink
+                        href="#"
+                        onClick={() => handleNavigation("strategy-library")}
+                        className={cn("rounded-none text-md text-muted-foreground", path.includes("strategy-library") ? "border-b-3 border-b-black text-black" : "")}
+                    >
                         Strategy Library
                     </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <NavigationMenuLink href="ai-portfolio-manager" className={cn("rounded-none text-md text-muted-foreground", path.includes("ai-portfolio-manager") ? "border-b-3 border-b-black text-black" : "")}>
+                    <NavigationMenuLink
+                        href="#"
+                        onClick={() => handleNavigation("ai-portfolio-manager")}
+                        className={cn("rounded-none text-md text-muted-foreground", path.includes("ai-portfolio-manager") ? "border-b-3 border-b-black text-black" : "")}
+                    >
                         AI Portfolio Manager
                     </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -115,7 +137,11 @@ export function MainNav() {
                     </NavigationMenuContent>
                 </NavigationMenuItem> */}
                 <NavigationMenuItem>
-                    <NavigationMenuLink href="dashboard" className={cn("rounded-none text-md text-muted-foreground", path.includes("dashboard") ? "border-b-3 border-b-black text-black" : "")}>
+                    <NavigationMenuLink
+                        href="#"
+                        onClick={() => handleNavigation("dashboard")}
+                        className={cn("rounded-none text-md text-muted-foreground", path.includes("dashboard") ? "border-b-3 border-b-black text-black" : "")}
+                    >
                         Dashboard
                     </NavigationMenuLink>
                 </NavigationMenuItem>

@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { Toaster } from "@/components/ui/sonner"
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { PrivyProvider } from "@/providers/privy-provider";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { ChainProvider } from "@/providers/chain-context";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,9 +35,12 @@ export default function RootLayout({
         {/* Background overlay */}
         <div className="absolute inset-0 bg-[url('/backdrop.jpeg')] bg-cover bg-center bg-no-repeat bg-fixed opacity-16 z-0" />
         <PrivyProvider>
-          <Header />
-          {children}
-          <Footer />
+          <Toaster position="top-center" />
+          <ChainProvider>
+            <Header />
+            {children}
+            <Footer />
+          </ChainProvider>
         </PrivyProvider>
       </body>
     </html>

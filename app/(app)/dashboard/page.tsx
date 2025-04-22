@@ -1,7 +1,9 @@
-export default function Dashboard() {
+import { TrasnactionStatus } from "./_components/transaction-status";
+
+export default function Page() {
     return (
         <div>
-            dashboard
+            <TrasnactionStatus />
         </div>
     )
 }
