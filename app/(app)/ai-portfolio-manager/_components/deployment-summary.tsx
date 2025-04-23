@@ -2,13 +2,19 @@ import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { formatNumber } from "@/lib/utils"
 import { PortfolioSummary } from "@/types/strategy"
+import { ViewState } from "@/types/view-state";
 
 interface DeploymentSummaryProps {
     portfolioSummary: PortfolioSummary;
-    onConfirm: () => void;
+    setView: React.Dispatch<React.SetStateAction<ViewState>>
 }
 
-export const DeploymentSummary = ({ portfolioSummary, onConfirm }: DeploymentSummaryProps) => {
+export const DeploymentSummary = ({ portfolioSummary, setView }: DeploymentSummaryProps) => {
+
+    const onConfirm = () => {
+        setView("confirm")
+    }
+
     return (
         <div className="relative rounded-2xl w-xl bg-[url('/orange-bg.jpeg')]">
             {/* background layer */}

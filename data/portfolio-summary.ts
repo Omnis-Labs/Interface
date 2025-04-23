@@ -36,4 +36,5 @@ export const mockPortfolioSummary: PortfolioSummary = {
             color: "#BB9CFD",
         },
     ],
+    lockPeriod: "180 days"
 };

@@ -3,16 +3,21 @@
 import { Button } from "@/components/ui/button"
 import { cn, formatNumber } from "@/lib/utils"
 import { PortfolioSummary } from "@/types/strategy"
+import { ViewState } from "@/types/view-state"
 import { ChartArea } from "lucide-react"
 import Link from "next/link"
 import * as React from "react"
 
 interface RecommendedPortfolioProps {
     portfolioSummary: PortfolioSummary;
-    onDeploy: () => void
+    setView: React.Dispatch<React.SetStateAction<ViewState>>
 }
 
-export function RecommendedPortfolio({ portfolioSummary, onDeploy }: RecommendedPortfolioProps) {
+export function RecommendedPortfolio({ portfolioSummary, setView }: RecommendedPortfolioProps) {
+
+    const onDeploy = () => {
+        setView("summary")
+    }
 
     return (
         <div className="rounded-2xl w-xl bg-[url('/navy-bg.jpeg')] bg-bottom-right">

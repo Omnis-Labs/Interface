@@ -10,6 +10,8 @@ import { PortfolioSummary } from "@/types/strategy"
 import { usePortfolioSummary } from "./_hooks/use-portfolio-summary"
 import { DeploymentSummary } from "./_components/deployment-summary"
 import { ViewState } from "@/types/view-state"
+import { TransactionResult } from "./_components/transaction-result"
+import { dummyTransaction } from "@/data/dummy-transaction"
 
 // export default function AiPortfolioManager() {
 //     return (
@@ -45,10 +47,6 @@ export default function AiPortfolioManager() {
     const [view, setView] = useState<ViewState>("form")
     const { portfolioSummary, onSubmit } = usePortfolioSummary(setView);
 
-    const handleDeployClick = () => {
-        setView("summary")
-    }
-
     const handleConfirm = () => {
         setView("confirm")
     }
@@ -61,20 +59,20 @@ export default function AiPortfolioManager() {
                     {view === "recommended" && portfolioSummary && (
                         <RecommendedPortfolio
                             portfolioSummary={portfolioSummary}
-                            onDeploy={handleDeployClick}
+                            setView={setView}
                         />
                     )}
                     {view === "summary" && portfolioSummary && (
                         <DeploymentSummary
                             portfolioSummary={portfolioSummary}
-                            onConfirm={handleConfirm}
+                            setView={setView}
                         />
                     )}
 
                     {view === "confirm" && portfolioSummary && (
-                        <DeploymentSummary
-                            portfolioSummary={portfolioSummary}
-                            onConfirm={handleConfirm}
+                        <TransactionResult
+                            transactionResult={dummyTransaction}
+                            straegiesNum={portfolioSummary.strategies.length}
                         />
                     )}
                 </div>
