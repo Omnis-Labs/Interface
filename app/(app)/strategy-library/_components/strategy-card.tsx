@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 
 import { Button } from "@/components/ui/button"
@@ -12,12 +14,16 @@ import { StrategyInterface } from "@/types/strategy"
 import { Status } from "./status-variant"
 import { TvlBar } from "./tvl-bar"
 import { Icons, logos } from "@/lib/icons"
+import { usePathname, useRouter } from "next/navigation"
+import Link from "next/link"
 
 interface StrategyCardProps {
   strategy: StrategyInterface
 }
 
 export const StrategyCard = ({ strategy }: StrategyCardProps) => {
+  const path = usePathname();
+
 
   return (
     <Card className="relative w-full overflow-hidden">
@@ -66,7 +72,9 @@ export const StrategyCard = ({ strategy }: StrategyCardProps) => {
         </div>
       </CardContent>
       <CardFooter className="flex justify-center">
-        <Button className="rounded-full cursor-pointer bg-[#363F72] w-full hover:bg-[#363F72]/95">Start Earning</Button>
+        <Link href={`${path}/vaults/1`}>
+          <Button className="rounded-full cursor-pointer bg-[#363F72] w-full hover:bg-[#363F72]/95">Start Earning</Button>
+        </Link>
       </CardFooter>
     </Card>
   )

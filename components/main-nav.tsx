@@ -62,7 +62,7 @@ export function MainNav() {
             router.replace('/sign-in');
         } else {
             // If authenticated, navigate to the desired page
-            router.push(href);
+            router.replace(href);
         }
     };
 
