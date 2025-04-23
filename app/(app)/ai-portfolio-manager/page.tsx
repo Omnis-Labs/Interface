@@ -49,6 +49,10 @@ export default function AiPortfolioManager() {
         setView("summary")
     }
 
+    const handleConfirm = () => {
+        setView("confirm")
+    }
+
     return (
         <div className="relative font-[family-name:var(--font-geist-sans)] text-foreground">
             <div className="pt-4 px-4 mx-auto max-w-4xl">
@@ -61,7 +65,17 @@ export default function AiPortfolioManager() {
                         />
                     )}
                     {view === "summary" && portfolioSummary && (
-                        <DeploymentSummary portfolioSummary={portfolioSummary} />
+                        <DeploymentSummary
+                            portfolioSummary={portfolioSummary}
+                            onConfirm={handleConfirm}
+                        />
+                    )}
+
+                    {view === "confirm" && portfolioSummary && (
+                        <DeploymentSummary
+                            portfolioSummary={portfolioSummary}
+                            onConfirm={handleConfirm}
+                        />
                     )}
                 </div>
             </div>

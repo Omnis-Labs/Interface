@@ -26,4 +26,5 @@ export interface PortfolioSummary {
     expectedMonthlyReturn: number; // e.g., 187
     totalCapital: number; // e.g., 5000
     strategies: PortfolioStrategy[]; // Array of the strategies above
+    lockPeriod: string
 };

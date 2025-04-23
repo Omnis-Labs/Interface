@@ -31,7 +31,7 @@ function getRandomColor(): string {
 }
 
 function generateRecommendedPortfolio(values: FormValues): PortfolioSummary {
-    const { capitalAmount } = values;
+    const { capitalAmount, lockPeriod } = values;
 
     // Example hardcoded strategy pool (you'd later make this dynamic)
     let strategyPool: PortfolioStrategy[] = [
@@ -82,6 +82,7 @@ function generateRecommendedPortfolio(values: FormValues): PortfolioSummary {
         expectedAPR,
         expectedMonthlyReturn,
         totalCapital: capitalAmount,
-        strategies: strategyPool
+        strategies: strategyPool,
+        lockPeriod
     };
 }

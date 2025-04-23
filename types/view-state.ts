@@ -1,1 +1,1 @@
-export type ViewState = "form" | "recommended" | "summary"
+export type ViewState = "form" | "recommended" | "summary" | "confirm"
