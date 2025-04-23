@@ -53,9 +53,15 @@ export const PortfolioFormSchema = z.object({
         .min(1, { message: "Select at least one token" }),
 });
 
-export function PortfolioForm() {
+export type FormValues = z.infer<typeof PortfolioFormSchema>;
+
+interface PortfolioFormProps {
+    onSubmit(values: FormValues): void
+}
+
+export function PortfolioForm({ onSubmit }: PortfolioFormProps) {
     // 1. Define your form.
-    const form = useForm<z.infer<typeof PortfolioFormSchema>>({
+    const form = useForm<FormValues>({
         resolver: zodResolver(PortfolioFormSchema),
         defaultValues: {
             riskProfile: undefined,
@@ -79,13 +85,6 @@ export function PortfolioForm() {
             form.setValue("tokenPreferences", [...current, token]);
         }
     };
-
-    // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof PortfolioFormSchema>) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
-        console.log(values)
-    }
 
     return (
         <div className="rounded-2xl w-xl bg-[url('/blue-bg.jpeg')] bg-bottom-right">

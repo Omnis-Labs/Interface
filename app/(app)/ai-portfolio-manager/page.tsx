@@ -1,8 +1,13 @@
+"use client"
+
 import Image from "next/image"
 import { RotateCcw } from "lucide-react"
 import Chat from "./_components/chat"
-import { PortfolioForm } from "./_components/portfolio-form"
+import { FormValues, PortfolioForm } from "./_components/portfolio-form"
 import { RecommendedPortfolio } from "./_components/recommended-portfolio"
+import { useState } from "react"
+import { PortfolioSummary } from "@/types/strategy"
+import { usePortfolioSummary } from "./_hooks/use-portfolio-summary"
 
 // export default function AiPortfolioManager() {
 //     return (
@@ -35,13 +40,18 @@ import { RecommendedPortfolio } from "./_components/recommended-portfolio"
 // }
 
 export default function AiPortfolioManager() {
+    const { portfolioSummary, setPortfolioSummary, onSubmit } = usePortfolioSummary();
+
     return (
         <div className="relative font-[family-name:var(--font-geist-sans)] text-foreground">
             <div className="pt-4 px-4 mx-auto max-w-4xl">
                 <div className="flex items-center justify-center">
-                    <PortfolioForm />
+                    {portfolioSummary ? (
+                        <RecommendedPortfolio portfolioSummary={portfolioSummary!} />
+                    ) : (
+                        <PortfolioForm onSubmit={onSubmit} />
+                    )}
                 </div>
-                <RecommendedPortfolio />
             </div>
         </div>
     )
