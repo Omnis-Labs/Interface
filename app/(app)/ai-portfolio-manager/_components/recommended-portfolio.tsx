@@ -42,7 +42,7 @@ export function RecommendedPortfolio({ portfolioSummary, setView }: RecommendedP
                                         <div className="w-4 h-4 mt-1 rounded-full" style={{ backgroundColor: s.color }} />
                                         <div>
                                             <p className="text-md font-medium">{s.name}</p>
-                                            <p className="text-[#293056]">USDC Strategy</p>
+                                            <p className="text-[#293056]">USDT Strategy</p>
                                         </div>
                                         <p className={cn("rounded-full text-sm font-medium py-1 px-2", s.tag == "HOT" ? "text-[#D92D20] bg-[#FEE4E2]" : "text-[#027A48] bg-[#D1FADF]")}>{s.tag ? s.tag : ""}</p>
                                     </div>

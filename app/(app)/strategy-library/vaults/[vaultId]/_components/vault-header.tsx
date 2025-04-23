@@ -13,7 +13,7 @@ export default function VaultHeader({ vaultName, highestApy, totalTvl, capacity 
     return (
         <div className="h-fit py-2 space-y-4">
             <div className="flex flex-row flex-wrap items-center md:gap-6 space-y-1">
-                <Icons.solana className="w-12 h-12" />
+                <Icons.binance className="w-12 h-12" />
                 <h1 className="text-3xl font-semibold">{vaultName}</h1>
             </div>
 

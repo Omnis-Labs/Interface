@@ -40,7 +40,6 @@ export const Strategy = () => {
                         <div>
                             <h3 className="text-sm text-gray-400">Max Daily Drawdwon</h3>
                             <p className={`text-2xl font-semibold ${vault?.dailyDrawdown && vault.dailyDrawdown > 0 ? "text-[var(--vault-page-primary)]" : "text-destructive"}`}>{vault?.dailyDrawdown}%</p>
-                            <p className={`text-2xl font-semibold ${vault?.dailyDrawdown && vault.dailyDrawdown > 0 ? "text-[var(--vault-page-primary)]" : "text-destructive"}`}>{vault?.dailyDrawdown}%</p>
                         </div>
                     </div>
                 </div>

@@ -24,7 +24,7 @@ export const DepositCard = () => {
                     placeholder="0.00"
                     className="text-2xl font-semibold border-none outline-none appearance-textfield [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                 />
-                {!amount ? <Icons.usdc className="absolute right-2 bottom-1/4 w-6 h-6" /> : <X onClick={() => setAmount("")} className="absolute right-2 bottom-1/4 w-6 h-6 p-1 cursor-pointer text-zinc-800 rounded-full border border-zinc-700" />}
+                {!amount ? <Icons.usdt className="absolute right-2 bottom-1/4 w-6 h-6" /> : <X onClick={() => setAmount("")} className="absolute right-2 bottom-1/4 w-6 h-6 p-1 cursor-pointer text-zinc-800 rounded-full border border-zinc-700" />}
             </div>
 
             <div className="flex items-center justify-between my-2">
@@ -58,7 +58,7 @@ export const DepositCard = () => {
                                 <p className="font-normal text-lg tracking-tighter">{formatNumber(Number(amount), 2)}</p>
                             </div>
                         }
-                        <Icons.usdc className="w-4 h-4" />
+                        <Icons.usdt className="w-4 h-4" />
                     </div>
                 </div>
 
