@@ -62,7 +62,7 @@ export function MainNav() {
             router.replace('/sign-in');
         } else {
             // If authenticated, navigate to the desired page
-            router.replace(href);
+            router.push(href)
         }
     };
 
@@ -72,7 +72,7 @@ export function MainNav() {
                 <NavigationMenuItem>
                     <NavigationMenuLink
                         href="#"
-                        onClick={() => handleNavigation("strategy-library")}
+                        onClick={() => handleNavigation("/strategy-library")}
                         className={cn("rounded-none text-md text-muted-foreground", path.includes("strategy-library") ? "border-b-3 border-b-black text-black" : "")}
                     >
                         Strategy Library
@@ -81,7 +81,7 @@ export function MainNav() {
                 <NavigationMenuItem>
                     <NavigationMenuLink
                         href="#"
-                        onClick={() => handleNavigation("ai-portfolio-manager")}
+                        onClick={() => handleNavigation("/ai-portfolio-manager")}
                         className={cn("rounded-none text-md text-muted-foreground", path.includes("ai-portfolio-manager") ? "border-b-3 border-b-black text-black" : "")}
                     >
                         AI Portfolio Manager
@@ -139,7 +139,7 @@ export function MainNav() {
                 <NavigationMenuItem>
                     <NavigationMenuLink
                         href="#"
-                        onClick={() => handleNavigation("dashboard")}
+                        onClick={() => handleNavigation("/dashboard")}
                         className={cn("rounded-none text-md text-muted-foreground", path.includes("dashboard") ? "border-b-3 border-b-black text-black" : "")}
                     >
                         Dashboard
