@@ -1,8 +1,11 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { formatNumber } from "@/lib/utils"
 import { Transaction } from "@/types/transaction-result";
 import { CircleCheck, SquareArrowOutUpRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface TransactionResultProps {
     transactionResult: Transaction
@@ -10,6 +13,7 @@ interface TransactionResultProps {
 }
 
 export const TransactionResult = ({ straegiesNum, transactionResult }: TransactionResultProps) => {
+    const router = useRouter();
 
     return (
         <div className="relative rounded-2xl w-xl">
@@ -58,7 +62,7 @@ export const TransactionResult = ({ straegiesNum, transactionResult }: Transacti
                     This will execute via our vault smart contract. You'll need to sign this transaction with your wallet.
                 </div>
 
-                <Button className="bg-[#363F72] w-full rounded-3xl hover:bg-[#363F72]/90 cursor-pointer">
+                <Button onClick={() => router.push("/dashboard")} className="bg-[#363F72] w-full rounded-3xl hover:bg-[#363F72]/90 cursor-pointer">
                     View in Dashboard
                 </Button>
             </div>

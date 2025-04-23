@@ -47,13 +47,14 @@ export default function AiPortfolioManager() {
     const [view, setView] = useState<ViewState>("form")
     const { portfolioSummary, onSubmit } = usePortfolioSummary(setView);
 
-    const handleConfirm = () => {
-        setView("confirm")
-    }
-
     return (
         <div className="relative font-[family-name:var(--font-geist-sans)] text-foreground">
-            <div className="pt-4 px-4 mx-auto max-w-4xl">
+            <div className="pt-4 px-4 mx-auto max-w-xl space-y-3">
+                <div className="space-y-1">
+                    <p className="text-3xl font-semibold">AI Portfolio Manager</p>
+                    <p className="text-[#363F72]">Build optimized DeFi portfolios tailored to your risk profile, investment goals, and preferred assets.</p>
+                </div>
+
                 <div className="flex items-center justify-center">
                     {view === "form" && <PortfolioForm onSubmit={onSubmit} />}
                     {view === "recommended" && portfolioSummary && (
