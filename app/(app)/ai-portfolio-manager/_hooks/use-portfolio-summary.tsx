@@ -3,8 +3,10 @@
 import { PortfolioStrategy, PortfolioSummary } from "@/types/strategy";
 import { FormValues } from "../_components/portfolio-form";
 import { useState } from "react";
+import { ViewState } from "@/types/view-state";
 
-export const usePortfolioSummary = () => {
+
+export const usePortfolioSummary = (setView: React.Dispatch<React.SetStateAction<ViewState>>) => {
     const [portfolioSummary, setPortfolioSummary] = useState<PortfolioSummary | null>(null)
 
     function onSubmit(values: FormValues) {
@@ -13,6 +15,7 @@ export const usePortfolioSummary = () => {
         console.log(values)
         const recommendedPortfolio = generateRecommendedPortfolio(values);
         setPortfolioSummary(recommendedPortfolio); // show the result card
+        setView("recommended")
     }
 
     return { portfolioSummary, setPortfolioSummary, onSubmit }

@@ -8,6 +8,8 @@ import { RecommendedPortfolio } from "./_components/recommended-portfolio"
 import { useState } from "react"
 import { PortfolioSummary } from "@/types/strategy"
 import { usePortfolioSummary } from "./_hooks/use-portfolio-summary"
+import { DeploymentSummary } from "./_components/deployment-summary"
+import { ViewState } from "@/types/view-state"
 
 // export default function AiPortfolioManager() {
 //     return (
@@ -40,16 +42,26 @@ import { usePortfolioSummary } from "./_hooks/use-portfolio-summary"
 // }
 
 export default function AiPortfolioManager() {
-    const { portfolioSummary, setPortfolioSummary, onSubmit } = usePortfolioSummary();
+    const [view, setView] = useState<ViewState>("form")
+    const { portfolioSummary, onSubmit } = usePortfolioSummary(setView);
+
+    const handleDeployClick = () => {
+        setView("summary")
+    }
 
     return (
         <div className="relative font-[family-name:var(--font-geist-sans)] text-foreground">
             <div className="pt-4 px-4 mx-auto max-w-4xl">
                 <div className="flex items-center justify-center">
-                    {portfolioSummary ? (
-                        <RecommendedPortfolio portfolioSummary={portfolioSummary!} />
-                    ) : (
-                        <PortfolioForm onSubmit={onSubmit} />
+                    {view === "form" && <PortfolioForm onSubmit={onSubmit} />}
+                    {view === "recommended" && portfolioSummary && (
+                        <RecommendedPortfolio
+                            portfolioSummary={portfolioSummary}
+                            onDeploy={handleDeployClick}
+                        />
+                    )}
+                    {view === "summary" && portfolioSummary && (
+                        <DeploymentSummary portfolioSummary={portfolioSummary} />
                     )}
                 </div>
             </div>

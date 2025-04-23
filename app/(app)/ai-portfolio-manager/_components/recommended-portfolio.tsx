@@ -8,10 +8,11 @@ import Link from "next/link"
 import * as React from "react"
 
 interface RecommendedPortfolioProps {
-    portfolioSummary: PortfolioSummary
+    portfolioSummary: PortfolioSummary;
+    onDeploy: () => void
 }
 
-export function RecommendedPortfolio({ portfolioSummary }: RecommendedPortfolioProps) {
+export function RecommendedPortfolio({ portfolioSummary, onDeploy }: RecommendedPortfolioProps) {
 
     return (
         <div className="rounded-2xl w-xl bg-[url('/navy-bg.jpeg')] bg-bottom-right">
@@ -80,7 +81,7 @@ export function RecommendedPortfolio({ portfolioSummary }: RecommendedPortfolioP
                     </div>
 
                     <div className="space-y-1">
-                        <Button className="bg-[#363F72] w-full rounded-3xl hover:bg-[#363F72]/90 cursor-pointer">
+                        <Button onClick={onDeploy} className="bg-[#363F72] w-full rounded-3xl hover:bg-[#363F72]/90 cursor-pointer">
                             Deploy Portfolio
                         </Button>
                         <Link href={"#"} className="text-sm text-[#717BBC] underline">learn more about these strategies</Link>
