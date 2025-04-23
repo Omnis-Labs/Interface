@@ -19,7 +19,7 @@ export const ConnectWalletButton = () => {
             alt: "Phantom",
         },
         {
-            src: "./wallets/metamask-icon.svg",
+            src: "./wallets/MetaMask.svg",
             alt: "MetaMask",
         },
         {

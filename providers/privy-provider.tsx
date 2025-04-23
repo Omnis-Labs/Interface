@@ -3,12 +3,8 @@
 import React from 'react';
 
 import { PrivyProvider as PrivyAuthProvider } from '@privy-io/react-auth';
-import { toSolanaWalletConnectors } from '@privy-io/react-auth/solana';
 import { bsc } from 'viem/chains';
 
-const solanaConnectors = toSolanaWalletConnectors({
-    shouldAutoConnect: false,
-});
 
 export function PrivyProvider({ children, ...props }: { children: React.ReactNode }) {
     return (
@@ -20,18 +16,10 @@ export function PrivyProvider({ children, ...props }: { children: React.ReactNod
                 appearance: {
                     theme: 'light',
                     accentColor: '#676FFF',
-                    walletChainType: "ethereum-and-solana",
+                    walletChainType: "ethereum-only",
                     logo: "/logos/omnis-logo-full-1.svg",
                     showWalletLoginFirst: true,
-                    walletList: ['phantom', 'backpack', 'solflare', 'rainbow', 'coinbase_wallet', 'metamask', 'uniswap', 'universal_profile', 'wallet_connect']
-                },
-
-                solanaClusters: [{ name: 'devnet', rpcUrl: 'https://api.devnet.solana.com' }],
-
-                externalWallets: {
-                    solana: {
-                        connectors: solanaConnectors,
-                    },
+                    walletList: ['metamask', 'coinbase_wallet', 'rainbow', 'wallet_connect'], // only EVM wallets
                 },
 
                 // Only allow wallet login

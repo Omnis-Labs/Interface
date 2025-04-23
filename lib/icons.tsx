@@ -19,6 +19,9 @@ export const WalletIcons = {
     phantom: ({ width = 100, height = 100, className = "" }) => (
         <Image src="/wallets/Phantom_SVG_Icon.svg" alt="Phantom" width={width} height={height} className={className} />
     ),
+    metamask: ({ width = 100, height = 100, className = "" }) => (
+        <Image src="/wallets/MetaMask.svg" alt="metamask" width={width} height={height} className={className} />
+    ),
 }
 
 export const Icons = {

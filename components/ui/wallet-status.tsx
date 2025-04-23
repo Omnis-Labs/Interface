@@ -35,7 +35,7 @@ export const WalletStatus = () => {
             )}
         >
             <div className="flex items-center justify-center gap-2">
-                <WalletIcons.phantom className="w-6 h-6 rounded-md" />
+                <WalletIcons.metamask className="w-6 h-6 rounded-md" />
                 <div className="text-center text-sm">
                     {slicedWalletAd}
                 </div>

@@ -5,7 +5,7 @@ import "./globals.css";
 import { PrivyProvider } from "@/providers/privy-provider";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { ChainProvider } from "@/providers/chain-context";
+// import { ChainProvider } from "@/providers/chain-context";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,11 +36,11 @@ export default function RootLayout({
         <div className="absolute inset-0 bg-[url('/backdrop.jpeg')] bg-cover bg-center bg-no-repeat bg-fixed opacity-16 z-0" />
         <PrivyProvider>
           <Toaster position="top-center" />
-          <ChainProvider>
-            <Header />
-            {children}
-            <Footer />
-          </ChainProvider>
+          {/* <ChainProvider> */}
+          <Header />
+          {children}
+          <Footer />
+          {/* </ChainProvider> */}
         </PrivyProvider>
       </body>
     </html>
