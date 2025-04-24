@@ -42,7 +42,7 @@ export default function VaultHeader({ vaultName, highestApy, totalTvl, capacity 
                 </div>
 
                 <div className="text-gray-400 text-sm">
-                    Deposit USDC and convert to JLP with 2x-3x leverage. Experience automated, AI-driven yield.
+                    Deposit USDT and convert to JLP with 2x-3x leverage. Experience automated, AI-driven yield.
                 </div>
             </div>
         </div >
