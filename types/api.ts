@@ -40,7 +40,10 @@ export interface SubmitDepositResponse {
 export interface Transaction {
     id: string;
     type: string;
+    strategy: string;
     date: string;
-    amount: number;
+    amount?: number;
     status: string;
+    network: string;
+    gas: number;
 }

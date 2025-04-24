@@ -1,4 +1,6 @@
+import { PositonPerformance } from "./_components/performance-overview";
 import { PortfolioInfoCard } from "./_components/portfolio-info-card";
+import { TransactionHistory } from "./_components/transactions/transaction-history";
 
 export default function Page() {
     return (
@@ -15,6 +17,10 @@ export default function Page() {
                     <PortfolioInfoCard title={"Total Profit"} value={"$187.50"} status={"+12 USDT today"} statusColor={"#039855"} footerText={"Expected monthly: ~$187.00"} />
                     <PortfolioInfoCard title={"Lock Period"} value={"62 days"} status={"Remaining"} statusColor={"#FB6514"} footerText={"Unlocks on: July 15, 2025"} />
                 </div>
+
+                <PositonPerformance />
+
+                <TransactionHistory />
             </div>
         </div>
     )

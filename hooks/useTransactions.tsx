@@ -1,3 +1,5 @@
+"use client"
+
 import { useState, useEffect } from "react";
 import { Transaction } from "@/types/api";
 import { dummyTransactions } from "@/data/transactions";
