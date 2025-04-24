@@ -69,7 +69,7 @@ export default function PositionChart({ timeRange }: VaultChartProps) {
         datasets: [
             {
                 data: prices,
-                borderColor: "#00c389",
+                borderColor: "black",
                 tension: 0.4,
                 pointRadius: 0,
                 borderWidth: 2,
