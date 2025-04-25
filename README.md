@@ -1,7 +1,7 @@
 <p align="center">
   <a href="">
     <div style="background-color: white; display: inline-block; padding: 10px; border-radius: 50px;">
-        <img src="./public/omnis-logo.png" alt="omnis logo" width="500" />
+        <img src="./public/omnis-logo-full.png" alt="omnis logo" width="500" />
     </div>
   </a>
 </p>
