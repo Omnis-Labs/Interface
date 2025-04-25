@@ -1,40 +1,46 @@
-// // hooks/useUsdtBalance.ts
-// import { useEffect, useState } from "react";
-// import { useContractRead } from "wagmi";
-// import { ethers } from "ethers";
+import { useReadContract } from 'wagmi'
+import { useAccount } from 'wagmi'
+import { abi } from '@/lib/abi'
+import { formatUnits } from 'viem'
+import { bsc } from 'wagmi/chains'
 
-// const USDT_CONTRACT_ADDRESS = "0x55d398326f99059fF775485246999027B3197955"; // USDT on BNB Chain
-// const USDT_ABI = [
-//     "function balanceOf(address owner) view returns (uint256)",
-// ];
+const USDT_CONTRACT_BNB = '0x55d398326f99059fF775485246999027B3197955' // BNB Chain USDT
 
-// export const useUsdtBalance = (walletAddress?: string) => {
-//     const [formattedBalance, setFormattedBalance] = useState<string>("0");
+export const useUsdtBalance = () => {
+    const { address } = useAccount()
 
-//     const {
-//         data,
-//         isLoading,
-//         isError,
-//         refetch,
-//     } = useContractRead({
-//         address: USDT_CONTRACT_ADDRESS,
-//         abi: USDT_ABI,
-//         functionName: "balanceOf",
-//         args: [walletAddress],
-//         enabled: !!walletAddress,
-//         watch: true, // automatically updates on block change
-//     });
+    const result = useReadContract({
+        abi: abi,
+        address: USDT_CONTRACT_BNB,
+        functionName: 'balanceOf',
+        args: address ? [address] : undefined,
+        chainId: bsc.id,
+        query: {
+            enabled: !!address,
+        },
+    })
 
-//     useEffect(() => {
-//         if (data) {
-//             setFormattedBalance(ethers.utils.formatUnits(data, 18)); // USDT uses 18 decimals
-//         }
-//     }, [data]);
+    const decimalsResult = useReadContract({
+        abi: abi,
+        address: USDT_CONTRACT_BNB,
+        functionName: 'decimals',
+        query: {
+            enabled: !!address,
+        },
+    })
 
-//     return {
-//         balance: formattedBalance,
-//         isLoading,
-//         isError,
-//         refetch,
-//     };
-// };
+    const isLoading = result.isLoading || decimalsResult.isLoading
+    const error = result.error || decimalsResult.error
+
+    let formatted = '0'
+    if (result.data && decimalsResult.data) {
+        formatted = formatUnits(result.data, decimalsResult.data)
+    }
+
+    return {
+        raw: result.data,
+        formatted,
+        isLoading,
+        error,
+    }
+}
