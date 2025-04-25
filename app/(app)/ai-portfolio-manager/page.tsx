@@ -1,17 +1,16 @@
 "use client"
 
-import Image from "next/image"
-import { RotateCcw } from "lucide-react"
-import Chat from "./_components/chat"
-import { FormValues, PortfolioForm } from "./_components/portfolio-form"
+import { PortfolioForm } from "./_components/portfolio-form"
 import { RecommendedPortfolio } from "./_components/recommended-portfolio"
-import { useState } from "react"
-import { PortfolioSummary } from "@/types/strategy"
+import { useEffect, useState } from "react"
 import { usePortfolioSummary } from "./_hooks/use-portfolio-summary"
 import { DeploymentSummary } from "./_components/deployment-summary"
 import { ViewState } from "@/types/view-state"
 import { TransactionResult } from "./_components/transaction-result"
 import { dummyTransaction } from "@/data/dummy-transaction"
+import { useWalletAuth } from "@/hooks/useWalletAuth"
+import { useRouter } from "next/navigation"
+import { AiPortfolioManagerSkeleton } from "./_components/skeleton"
 
 // export default function AiPortfolioManager() {
 //     return (
@@ -46,6 +45,18 @@ import { dummyTransaction } from "@/data/dummy-transaction"
 export default function AiPortfolioManager() {
     const [view, setView] = useState<ViewState>("form")
     const { portfolioSummary, onSubmit } = usePortfolioSummary(setView);
+    const { isLoading, shouldRedirect } = useWalletAuth()
+    const router = useRouter();
+
+    useEffect(() => {
+        if (shouldRedirect) {
+            router.replace("/sign-in")
+        }
+    }, [shouldRedirect])
+
+    if (isLoading) {
+        return <AiPortfolioManagerSkeleton />
+    }
 
     return (
         <div className="relative font-[family-name:var(--font-geist-sans)] text-foreground">

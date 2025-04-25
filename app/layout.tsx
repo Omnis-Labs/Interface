@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Toaster } from "@/components/ui/sonner"
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { PrivyProvider } from "@/providers/privy-provider";
+// import { PrivyProvider } from "@/providers/privy-provider";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 // import { ChainProvider } from "@/providers/chain-context";

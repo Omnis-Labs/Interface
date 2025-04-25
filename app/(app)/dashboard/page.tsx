@@ -1,8 +1,27 @@
+"use client"
+
+import { useWalletAuth } from "@/hooks/useWalletAuth";
 import { PositonPerformance } from "./_components/performance-overview";
 import { PortfolioInfoCard } from "./_components/portfolio-info-card";
 import { TransactionHistory } from "./_components/transactions/transaction-history";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { DashboardSkeleton } from "./_components/skeleton";
 
-export default function Page() {
+export default function Dashboard() {
+    const { isLoading, shouldRedirect } = useWalletAuth()
+    const router = useRouter();
+
+    useEffect(() => {
+        if (shouldRedirect) {
+            router.replace("/sign-in")
+        }
+    }, [shouldRedirect])
+
+    if (isLoading) {
+        return <DashboardSkeleton />
+    }
+
     return (
         <div className="relative font-[family-name:var(--font-geist-sans)] text-foreground">
             <div className="pt-4 px-4 mx-auto max-w-6xl space-y-6">
