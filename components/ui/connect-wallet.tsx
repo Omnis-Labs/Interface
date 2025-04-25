@@ -13,7 +13,7 @@ export const ConnectWalletButton = () => {
 
     useEffect(() => {
         if (account.isConnected) {
-            router.replace('/ai-portfolio-manager');
+            router.replace('/strategy-library');
         }
     }, [account.isConnected]);
 

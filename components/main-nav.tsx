@@ -11,8 +11,6 @@ import {
     NavigationMenuList,
 } from "@/components/ui/navigation-menu"
 import { usePathname } from "next/navigation"
-import { usePrivy } from "@privy-io/react-auth"
-import { useAccount } from "wagmi"
 
 const components: { title: string; href: string; description: string }[] = [
     {
