@@ -8,14 +8,43 @@ import { formatCurrency, formatNumber } from "@/lib/utils"
 import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { DepositRules } from "./rules"
+import { useAccount } from "wagmi"
+import { useWithdraw } from "../../_hooks/useWithdraw"
+import { toast } from "sonner"
+import { useUsdtBalance } from "@/hooks/useUsdtBalance"
 
 export const WithdrawlCard = () => {
     const [amount, setAmount] = useState("");
-    const currBalance = 7654;
+    const { address } = useAccount()
+    const { formatted, isLoading } = useUsdtBalance()
+    const { withdraw, loading, error } = useWithdraw();
+
+    const currBalance = Number(formatted);
     const apy = 12.6;
+    const vaultBalance = 0;
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!address) {
+            toast.error("Please fill in all the details.");
+            return;
+        }
+
+        console.log(address);
+        console.log(amount);
+
+        try {
+            await withdraw({
+                wallet_address: address,
+            })
+            toast.success("Stragies Withdraw Successfully");
+        } catch (err: any) {
+            toast.error(`Error: ${error || 'An error occurred'}`);
+        }
+    };
 
     return (
-        <>
+        <form onSubmit={handleSubmit}>
             <div className="relative border border-zinc-600/90 rounded-lg px-4 py-2">
                 <input
                     type="number"
@@ -32,7 +61,7 @@ export const WithdrawlCard = () => {
                     <p>Balance:</p>
                     <p>{formatCurrency(currBalance)}</p>
                 </div>
-                <Badge className="rounded-full px-2 py-1 text-sm bg-[#F4EBFF] text-[#6941C6]">MAX</Badge>
+                <Button disabled={isLoading} type="button" onClick={() => setAmount(formatted)} className="rounded-full cursor-pointer px-2 py-1 text-sm bg-[#F4EBFF] text-[#6941C6] hover:bg-[#F4EBFF]/60">MAX</Button>
             </div>
 
             <div className="space-y-1 mt-6">
@@ -64,7 +93,7 @@ export const WithdrawlCard = () => {
 
                 <Button
                     type="submit"
-                    disabled
+                    disabled={!amount}
                     className={`w-full border border-zinc-600/80 text-md py-5 my-6 ${amount
                         ? "bg-[#363F72] hover:bg-blue-500 cursor-pointer"
                         : "bg-zinc-600 hover:bg-zinc-800"
@@ -75,6 +104,6 @@ export const WithdrawlCard = () => {
 
                 <DepositRules />
             </div>
-        </>
+        </form>
     )
 }
