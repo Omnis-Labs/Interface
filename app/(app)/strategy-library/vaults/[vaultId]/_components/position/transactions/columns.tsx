@@ -21,7 +21,7 @@ export const columns: ColumnDef<Transaction>[] = [
     {
         accessorKey: "amount",
         header: "Amount",
-        cell: ({ row }) => `${formatCurrency(row.original.amount)}`
+        cell: ({ row }) => `${formatCurrency(row.original.amount!)}`
     },
 
     {

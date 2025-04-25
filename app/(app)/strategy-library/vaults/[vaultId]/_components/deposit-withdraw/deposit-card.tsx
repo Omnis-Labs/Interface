@@ -8,9 +8,15 @@ import { formatCurrency, formatNumber } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { useState } from "react"
 import { DepositRules } from "./rules"
+import { useAccount, useBalance } from "wagmi"
 
 export const DepositCard = () => {
     const [amount, setAmount] = useState("");
+    const { address, isConnected } = useAccount();
+
+    const { data: balance, isLoading, isError } = useBalance({
+        address,
+    });
 
     const currBalance = 7654;
     const apy = 12.6;
