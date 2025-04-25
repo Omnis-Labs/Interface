@@ -8,29 +8,16 @@ import { formatCurrency, formatNumber } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { useState } from "react"
 import { DepositRules } from "./rules"
-import { useAsterAPI } from "../../_context/aster-api-context"
 
 export const DepositCard = () => {
     const [amount, setAmount] = useState("");
-    const { asterAPIkey, asterSecretAPIkey } = useAsterAPI();
 
     const currBalance = 7654;
     const apy = 12.6;
 
-    const handleSubmit = (event: { preventDefault: () => void }) => {
-        event.preventDefault();
-        if (!asterAPIkey || !asterSecretAPIkey) {
-            alert("Please fill in both API keys.");
-            return;
-        }
-        console.log(amount)
-        console.log(asterAPIkey);
-        console.log(asterSecretAPIkey);
-    }
-
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            <form>
                 <div className="relative border border-zinc-600/90 rounded-lg px-4 py-2">
                     <input
                         type="number"
