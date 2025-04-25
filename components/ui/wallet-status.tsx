@@ -1,45 +1,35 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { useLogout, usePrivy } from "@privy-io/react-auth"
 
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
-import { WalletIcons } from "@/lib/icons"
+import { Skeleton } from "@/components/ui/skeleton"
+import { ConnectButton } from "@rainbow-me/rainbowkit"
+import { useAccount } from 'wagmi'
 
 export const WalletStatus = () => {
-    const router = useRouter();
+    // const router = useRouter()
+    // const { isDisconnected, isConnecting } = useAccount()
+    // const [isHydrated, setIsHydrated] = useState(false)
 
-    const { user, authenticated, ready } = usePrivy();
-    const { logout } = useLogout({
-        onSuccess: () => {
-            router.replace("/sign-in");
-        }
-    })
+    // useEffect(() => {
+    //     // Set true only on client after mount
+    //     setIsHydrated(true)
+    // }, [])
 
-    useEffect(() => {
-        if (!authenticated) {
-            router.replace('/sign-in');
-        }
-    }, [authenticated, router]);
+    // useEffect(() => {
+    //     if (!isHydrated) return
 
-    const walletAddress = ready && authenticated && user?.wallet?.address ? user.wallet.address : null;
-    const slicedWalletAd = walletAddress ? walletAddress.slice(0, 4) + "..." + walletAddress.slice(-4) : "Loading...";
+    //     if (isDisconnected) {
+    //         router.replace("/sign-in")
+    //     }
+    // }, [isDisconnected, isHydrated, router])
+
+    // if (!isHydrated || isConnecting) {
+    //     return <Skeleton className="h-10 w-40 rounded-full" />
+    // }
 
     return (
-        <Button
-            onClick={logout}
-            className={cn(
-                "px-4 py-4 text-xl rounded-xl cursor-pointer text-center relative overflow-hidden bg-gradient-to-r from-[#000A3F] via-[#000A3F] to-[#6FB1FC] flex justify-center group/modal-btn",
-            )}
-        >
-            <div className="flex items-center justify-center gap-2">
-                <WalletIcons.metamask className="w-6 h-6 rounded-md" />
-                <div className="text-center text-sm">
-                    {slicedWalletAd}
-                </div>
-            </div>
-        </Button>
+        <ConnectButton />
     )
 }

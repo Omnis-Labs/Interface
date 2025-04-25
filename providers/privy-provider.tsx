@@ -19,7 +19,7 @@ export function PrivyProvider({ children, ...props }: { children: React.ReactNod
                     walletChainType: "ethereum-only",
                     logo: "/logos/omnis-logo-full-1.svg",
                     showWalletLoginFirst: true,
-                    walletList: ['metamask', 'coinbase_wallet', 'rainbow', 'wallet_connect'], // only EVM wallets
+                    walletList: ['metamask', 'coinbase_wallet', 'rainbow'], // only EVM wallets
                 },
 
                 // Only allow wallet login

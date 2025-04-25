@@ -10,6 +10,7 @@ import { VaultOverview } from "./working/vault-overview"
 import { useVaultStore } from "@/store/useVaultStore"
 import { StrategyRisk } from "./strategy-risk/strategy-and-risk"
 import { Postion } from "./position/position"
+import { AsterApiInput } from "./aster-api-input/aster-key-input"
 
 interface VaultDetailProps {
     vaultId: string
@@ -84,8 +85,10 @@ export default function VaultDetail({ vaultId }: VaultDetailProps) {
                 </div>
             </div>
 
-            <div className="col-span-3 lg:col-span-1">
+            <div className="col-span-3 lg:col-span-1 space-y-2">
                 <DepositWaithrawlCard />
+
+                <AsterApiInput />
             </div>
         </div>
     )

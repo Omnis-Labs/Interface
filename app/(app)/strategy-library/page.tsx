@@ -1,14 +1,30 @@
 "use client"
 
+import { useWalletAuth } from "@/hooks/useWalletAuth";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { SearchBar } from "./_components/search-bar";
 import { StrategyCard } from "./_components/strategy-card";
 import { StrategyFilter } from "./_components/strategy-filter";
 import { StrategySort } from "./_components/strategy-sort";
 import { useStrategies } from "@/hooks/useStrategies"
+import { StrategyLibrarySkeleton } from "./_components/skeleton";
 
 export default function StrategyLibrary() {
     const { strategies } = useStrategies();
     const strategy_num = strategies.length;
+    const { isLoading, shouldRedirect } = useWalletAuth()
+    const router = useRouter();
+
+    useEffect(() => {
+        if (shouldRedirect) {
+            router.replace("/sign-in")
+        }
+    }, [shouldRedirect])
+
+    if (isLoading) {
+        return <StrategyLibrarySkeleton />
+    }
 
     return (
         <div className="relative font-[family-name:var(--font-geist-sans)] text-foreground">

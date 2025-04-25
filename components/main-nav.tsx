@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/navigation-menu"
 import { usePathname } from "next/navigation"
 import { usePrivy } from "@privy-io/react-auth"
+import { useAccount } from "wagmi"
 
 const components: { title: string; href: string; description: string }[] = [
     {
@@ -53,17 +54,11 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function MainNav() {
     const path = usePathname();
-    const { authenticated } = usePrivy(); // Get authenticated state
     const router = useRouter();
 
     const handleNavigation = (href: string) => {
-        if (!authenticated) {
-            // If not authenticated, redirect to sign-in
-            router.replace('/sign-in');
-        } else {
-            // If authenticated, navigate to the desired page
-            router.push(href)
-        }
+        // If authenticated, navigate to the desired page
+        router.push(href)
     };
 
     return (
