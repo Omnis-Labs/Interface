@@ -46,7 +46,6 @@ export const StrategyCard = ({ strategy }: StrategyCardProps) => {
         <div className="flex flex-col items-center">
           <p className="text-sm font-medium">APY</p>
           <p className="text-2xl font-bold">{strategy.apy}</p>
-          <p className="text-sm text-[#EC4A0A]">{strategy.ntPoints}x</p>
         </div>
 
         <div className="flex flex-col items-center gap-0.5">

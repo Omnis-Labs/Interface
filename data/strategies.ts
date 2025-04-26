@@ -6,7 +6,6 @@ export const dummyStrategies: StrategyInterface[] = [
         name: "Volume Bot",
         strategy: "Earn Aster Rh Points",
         apy: "5.5%",
-        ntPoints: null,
         currentTVL: 11317930.10,
         maxCapacity: 26000000,
         network: "Binance",
@@ -29,14 +28,13 @@ export const dummyStrategies: StrategyInterface[] = [
         withdrawalFee: 0.1, // % - Small withdrawal fee example
         earlyExitPenalty: false, // No penalty
         isActive: true // Assuming active for demo
-        
+
     },
     {
         id: "normal_grid",
         name: "Normal Grid",
         strategy: "Uses equal price steps",
         apy: "13.85%",
-        ntPoints: null,
         currentTVL: 738342.05,
         maxCapacity: 1000000,
         network: "Binance",
@@ -66,10 +64,15 @@ export const dummyStrategies: StrategyInterface[] = [
         name: "Log Grid",
         strategy: "Uses proportional price steps", // null: No sub-strategy shown
         apy: "17.33%",
-        ntPoints: null,
-         // --- Calculated/Derived ---
+
+        currentTVL: 548342.05,
+        maxCapacity: 1000000,
+        network: "Binance",
+        status: "HOT",
+        // --- Calculated/Derived ---
         capacity: 79.0, // Approximate percentage (currentTVL / maxCapacity * 100)
         maxCap: 500000, // Same as maxCapacity
+
         // --- Other Plausible Demo Metrics ---
         highestApy: 18.5, // % - Slightly higher peak APY for demo
         dailyDrawdown: 0.40, // % - Plausible daily fluctuation
@@ -85,6 +88,6 @@ export const dummyStrategies: StrategyInterface[] = [
         performanceFee: 10, // % - Example performance fee on profit
         withdrawalFee: 0.1, // % - Small withdrawal fee example
         earlyExitPenalty: false, // No penalty
-        isActive: true // Assuming active for demo
+        isActive: true,
     }
 ];
