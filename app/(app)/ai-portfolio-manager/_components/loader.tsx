@@ -40,8 +40,8 @@ export const Loader = () => {
                 <p className="text-[13px] text-[#7a7db3] w-md">We're optimizing your portfolio based on current market data, risk parameters, and your investment preferences.</p>
             </div>
 
-            <div className="flex justify-center my-8 overflow-y-hidden">
-                <MultiStepLoader loadingStates={loadingStates} loading={loading} duration={2000} />
+            <div className="flex justify-center my-8 overflow-y-hidden pt-2">
+                <MultiStepLoader loadingStates={loadingStates} loading={loading} duration={5000} />
             </div>
         </div>
     )
