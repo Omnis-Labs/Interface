@@ -2,6 +2,7 @@ import { StrategyInterface } from "@/types/strategy";
 
 export const dummyStrategies: StrategyInterface[] = [
     {
+        id: "1",
         name: "Volume Bot",
         strategy: "Earn Aster Rh Points",
         apy: "5.5%",
@@ -9,9 +10,27 @@ export const dummyStrategies: StrategyInterface[] = [
         currentTVL: 11317930.10,
         maxCapacity: 26000000,
         network: "Binance",
-        status: "HOT"
+        status: "HOT",
+        capacity: 0,
+        maxCap: 0,
+        highestApy: 0,
+        dailyDrawdown: 0,
+        volume: 0,
+        chain: "BSC",
+        collateral: "",
+        leverage: 0,
+        riskLevel: 1,
+        liquidationThreshold: 0,
+        age: "",
+        createdAt: "",
+        protocols: [],
+        performanceFee: 0,
+        withdrawalFee: 0,
+        earlyExitPenalty: false,
+        isActive: false
     },
     {
+        id: "2",
         name: "Normal Grid",
         strategy: "Uses equal price steps",
         apy: "13.85%",
@@ -19,9 +38,27 @@ export const dummyStrategies: StrategyInterface[] = [
         currentTVL: 738342.05,
         maxCapacity: 1000000,
         network: "Binance",
-        status: "HOT"
+        status: "HOT",
+        capacity: 0,
+        maxCap: 0,
+        highestApy: 0,
+        dailyDrawdown: 0,
+        volume: 0,
+        chain: "BSC",
+        collateral: "",
+        leverage: 0,
+        riskLevel: 1,
+        liquidationThreshold: 0,
+        age: "",
+        createdAt: "",
+        protocols: [],
+        performanceFee: 0,
+        withdrawalFee: 0,
+        earlyExitPenalty: false,
+        isActive: false
     },
     {
+        id: "3",
         name: "Log Grid",
         strategy: "Uses proportional price steps", // null: No sub-strategy shown
         apy: "17.33%",
@@ -29,6 +66,23 @@ export const dummyStrategies: StrategyInterface[] = [
         currentTVL: 395112.36,
         maxCapacity: 500000,
         network: "Binance",
-        status: "NEW"
+        status: "NEW",
+        capacity: 0,
+        maxCap: 0,
+        highestApy: 0,
+        dailyDrawdown: 0,
+        volume: 0,
+        chain: "BSC",
+        collateral: "",
+        leverage: 0,
+        riskLevel: 1,
+        liquidationThreshold: 0,
+        age: "",
+        createdAt: "",
+        protocols: [],
+        performanceFee: 0,
+        withdrawalFee: 0,
+        earlyExitPenalty: false,
+        isActive: false
     }
 ];

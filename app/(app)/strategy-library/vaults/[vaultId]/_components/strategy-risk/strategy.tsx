@@ -1,7 +1,7 @@
-import { useVaultStore } from "@/store/useVaultStore"
+import { useStrategyStore } from "@/store/useStrategyStore"
 
 export const Strategy = () => {
-    const vault = useVaultStore((state) => state.vault)
+    const vault = useStrategyStore((state) => state.strategy)
 
     return (
         <div className="space-y-10">

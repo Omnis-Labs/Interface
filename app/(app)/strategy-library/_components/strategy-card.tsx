@@ -72,7 +72,7 @@ export const StrategyCard = ({ strategy }: StrategyCardProps) => {
         </div>
       </CardContent>
       <CardFooter className="flex justify-center">
-        <Link href={`${path}/vaults/1`}>
+        <Link href={`${path}/vaults/${strategy.id}`}>
           <Button className="rounded-full cursor-pointer bg-[#363F72] w-full hover:bg-[#363F72]/95">Start Earning</Button>
         </Link>
       </CardFooter>
