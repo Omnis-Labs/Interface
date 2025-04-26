@@ -2,7 +2,7 @@ import { StrategyInterface } from "@/types/strategy";
 
 export const dummyStrategies: StrategyInterface[] = [
     {
-        id: "1",
+        id: "volume",
         name: "Volume Bot",
         strategy: "Earn Aster Rh Points",
         apy: "5.5%",
@@ -30,7 +30,7 @@ export const dummyStrategies: StrategyInterface[] = [
         isActive: false
     },
     {
-        id: "2",
+        id: "normal_grid",
         name: "Normal Grid",
         strategy: "Uses equal price steps",
         apy: "13.85%",
@@ -58,7 +58,7 @@ export const dummyStrategies: StrategyInterface[] = [
         isActive: false
     },
     {
-        id: "3",
+        id: "log_grid",
         name: "Log Grid",
         strategy: "Uses proportional price steps", // null: No sub-strategy shown
         apy: "17.33%",
