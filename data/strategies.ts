@@ -2,9 +2,9 @@ import { StrategyInterface } from "@/types/strategy";
 
 export const dummyStrategies: StrategyInterface[] = [
     {
-        name: "USDC Staking",
-        strategy: "JLP Delta Neutral",
-        apy: "17.30%",
+        name: "Volume Bot",
+        strategy: "Earn Aster Rh Points",
+        apy: "5.5%",
         ntPoints: "1x NT Points",
         currentTVL: 11317930.10,
         maxCapacity: 26000000,
@@ -12,8 +12,8 @@ export const dummyStrategies: StrategyInterface[] = [
         status: "HOT"
     },
     {
-        name: "USDC Basis",
-        strategy: "Sanctum-INF",
+        name: "Normal Grid",
+        strategy: "Uses equal price steps",
         apy: "13.85%",
         ntPoints: "1.25x NT Points",
         currentTVL: 738342.05,
@@ -22,9 +22,9 @@ export const dummyStrategies: StrategyInterface[] = [
         status: "HOT"
     },
     {
-        name: "FUEL Maxi",
-        strategy: null, // No sub-strategy shown
-        apy: "7.5x FUEL Boost",
+        name: "Log Grid",
+        strategy: "Uses proportional price steps", // null: No sub-strategy shown
+        apy: "17.33%",
         ntPoints: "2x NT Points",
         currentTVL: 395112.36,
         maxCapacity: 500000,
