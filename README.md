@@ -8,9 +8,8 @@
   </a>
 </p>
 
-<h4 align="center">Empowers unbanked creators to achieve their financial goals and thrive in their businesses 🏦</h4>
-<p align="center">Visit the <a href="" target="_blank">demo site</a></p>
-<p align="center">Watch the <a href="" target="_blank">demo video</a></p>
+<p align="center">Visit the <a href="https://omnis-interface.vercel.app" target="_blank">demo site</a></p>
+<p align="center">Read the <a href="https://omnis-labs.gitbook.io/v1" target="_blank">documentation</a></p>
 <br />
 
 **Omnis** is a decentralized portfolio manager designed for the Binance Smart Chain (BSC). It enables users to access automated DeFi strategies through simple vault interactions, secured wallet authentication, and smart contract operations — all with a sleek interface and optional AI assistant.
