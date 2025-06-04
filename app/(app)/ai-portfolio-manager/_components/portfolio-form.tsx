@@ -46,7 +46,7 @@ export const PortfolioFormSchema = z.object({
   }),
   tokenPreferences: z
     .array(
-      z.enum(["USDC", "USDT", "ETH", "BTC", "SOL"], {
+      z.enum(Object.values(Tokens) as [string, ...string[]], {
         required_error: "Select at least one token",
       })
     )
